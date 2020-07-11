@@ -5,5 +5,5 @@ from .models import BlogPost
 class BlogPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogPost
-        fields = '__all__ '
+        fields = '__all__'
         lookup_field = 'slug'
