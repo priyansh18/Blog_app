@@ -10,6 +10,7 @@ const Blog = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/featured`);
+        console.log("Featured:", response.data);
         setFeaturedBlog(response.data[0]);
       } catch (err) {
         console.log(err);
@@ -23,6 +24,7 @@ const Blog = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/`);
+        console.log("Blog:", response.data);
         setBlogs(response.data);
       } catch (err) {
         console.log(err);
@@ -31,6 +33,48 @@ const Blog = () => {
 
     fetchBlogs();
   }, []);
+
+  const capitalize = (word) => {
+    if (word) return word.charAt(0).toUpperCase() + word.slice(1);
+    return "";
+  };
+
+  const getBlogs = () => {
+    let list = [];
+    let result = [];
+
+    blogs.map((blogPost) => {
+      return list.push(
+        <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div className="col p-4 d-flex flex-column position-static">
+            <strong className="d-inline-block mb-2 text-primary">{capitalize(blogPost.category)}</strong>
+      <h3 className="mb-0">{blogPost.title}</h3>
+      <div className="mb-1 text-muted">{blogPost.month} {blogPost.day}</div>
+            <p className="card-text mb-auto">
+              {blogPost.excrept}
+            </p>
+            <Link to={`/blog/${blogPost.slug}`} className="stretched-link">
+              Continue reading
+            </Link>
+          </div>
+          <div className="col-auto d-none d-lg-block">
+            <img src={blogPost.thumbnail} width='200' height='250' alt="thumbnail"/>
+          </div>
+        </div>
+      );
+    });
+
+    for (let i = 0; i < list.length; i += 2) {
+      result.push(
+        <div key={i} className="row mb-2">
+          <div className="col-md-6">{list[i]}</div>
+          <div className="col-md-6">{list[i + 1] ? list[i + 1] : null}</div>
+        </div>
+      );
+    }
+
+    return result;
+  };
 
   return (
     <div className="container mt-3">
@@ -66,7 +110,7 @@ const Blog = () => {
           <Link className="p-2 text-muted" to="/category/health">
             Health
           </Link>
-          <Link className="p-2 text-muted" to="/category/sryle">
+          <Link className="p-2 text-muted" to="/category/style">
             Style
           </Link>
           <Link className="p-2 text-muted" to="/category/travel">
@@ -74,6 +118,18 @@ const Blog = () => {
           </Link>
         </nav>
       </div>
+      <div className="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div className="col-md-6 px-0">
+          <h1 className="display-4 font-italic">{featuredBlog.title}</h1>
+          <p className="lead my-3">{featuredBlog.excrept}</p>
+          <p className="lead mb-0">
+            <Link to={`/blog/${featuredBlog.slug}`} className="text-white font-weight-bold">
+              Continue reading...
+            </Link>
+          </p>
+        </div>
+      </div>
+      {getBlogs()}
     </div>
   );
 };
