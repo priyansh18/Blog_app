@@ -42,7 +42,7 @@ const BlogDetail = (props) => {
       <div className="mt-5 mb-5" dangerouslySetInnerHTML={createBlog()} />
       <hr />
       <p className="lead mb-5">
-        <Link to="/blogs" className="font-weight-bold">
+        <Link to="/blog" className="font-weight-bold">
           Back to Blogs
         </Link>
       </p>
