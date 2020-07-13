@@ -34,6 +34,7 @@ const BlogDetail = (props) => {
 
   return (
     <div className="container mt-3">
+      <img width="100%" height="300px" src={blog.thumbnail} alt="thumbnail"/>
       <h1 className="display-2">{blog.title}</h1>
       <h2 className="text-muted mt-3">Categoty: {capitalize(blog.category)}</h2>
       <h4>

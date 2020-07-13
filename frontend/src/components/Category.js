@@ -31,7 +31,7 @@ const Category = (props) => {
   const getCategoryBlogs = () => {
     let list = [];
     let result = [];
-
+    
     blogs.map((blogPost) => {
       return list.push(
         <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -72,6 +72,7 @@ const Category = (props) => {
 
   return (
     <div className="container mt-3">
+      
       <h3 className="display-4">{currentCategory} Category</h3>
       <div className="nav-scroller py-1 mb-2">
         <nav className="nav d-flex justify-content-between">
