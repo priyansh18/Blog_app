@@ -1,11 +1,13 @@
-# Blog_app
+# ⚠️ This project has been merged into [SceneIt](https://github.com/priyansh18/SceneIt)
 
-backend setup
+This repository is now **archived** and no longer maintained as a standalone project.
 
-To create virtual environment use command 
+All features from this project have been integrated into **SceneIt** — a unified movie discovery platform with:
 
-python -m venv venv
+- 🎬 Movie & TV search (OMDB API)
+- 🎭 Full cast with photos (Wikidata + Wikipedia)
+- ❤️ Likes & Bookmarks
+- 📅 Calendar-based watchlist with auto-scheduling
+- 🃏 3D flip cards for cast members
 
-To activate virtual environment
-
-source venv/Scripts/activate
+👉 **[Go to SceneIt →](https://github.com/priyansh18/SceneIt)**
